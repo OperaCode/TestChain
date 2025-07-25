@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
+    "@rainbow-me/rainbowkit": "^2.2.8",
     "@tailwindcss/vite": "^4.1.11",
     "axios": "^1.11.0",
     "ethers": "^6.15.0",
@@ -19,7 +20,9 @@
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.7.1",
     "react-toastify": "^11.0.5",
-    "tailwindcss": "^4.1.11"
+    "tailwindcss": "^4.1.11",
+    "viem": "^2.33.1",
+    "wagmi": "^2.16.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.30.1",

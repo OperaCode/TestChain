@@ -1,6 +1,8 @@
 // src/pages/Home.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 const Home = () => {
   const [faucets, setFaucets] = useState([]);
@@ -22,11 +24,34 @@ const Home = () => {
 
   if (loading)
     return (
-      <p className="text-center py-20 text-xl text-gray-400">Loading faucets...</p>
+      <p className="text-center py-20 text-xl text-gray-400">
+        Loading faucets...
+      </p>
     );
 
   return (
     <div className="bg-gray-900 min-h-screen text-white px-4 py-10">
+      <header className="relative z-10 flex justify-between items-center mb-12 max-w-7xl mx-auto">
+        <h1 className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+          TestnetTap
+        </h1>
+        <nav className="flex items-center gap-6">
+          <ul className="flex items-center gap-6">
+            <li>
+              <ConnectButton />
+            </li>
+            <li>
+              <Link
+                to="/"
+                className="text-gray-300 hover:text-cyan-400 transition-colors duration-200 font-semibold"
+              >
+                Exit App
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
       <h1 className="text-3xl md:text-4xl font-bold text-center mb-10">
         Available Testnet Faucets
       </h1>
