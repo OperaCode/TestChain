@@ -17,5 +17,5 @@ export const wagmiConfig = getDefaultConfig({
   },
 });
 
-// Export chains separately if needed
+
 export const chains = [mainnet, polygon, optimism, arbitrum];

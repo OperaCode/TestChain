@@ -4,18 +4,22 @@ import axios from "axios";
 import { useSwitchChain, useAccount } from "wagmi";
 import toast, { Toaster } from "react-hot-toast";
 
+
+  const BASE_URL=import.meta.env.VITE_BASE_URL
 const FaucetList = () => {
+
+  // States
   const [faucets, setFaucets] = useState([]);
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState("");
-
   const { switchChain } = useSwitchChain();
   const { isConnected } = useAccount();
 
+  // fetch faucets from backend
   useEffect(() => {
     const fetchFaucets = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/server/faucets");
+        const res = await axios.get(`${BASE_URL}/server/faucets`);
         setFaucets(res.data);
       } catch (err) {
         console.error("Error fetching faucets:", err);
@@ -29,6 +33,7 @@ const FaucetList = () => {
 
   if (loading) return <p className="text-center py-10">Loading faucets...</p>;
 
+  // chain emojis
   const chainEmojis = {
     "Ethereum Sepolia": "🟣",
     "Polygon Mumbai": "🟪",
@@ -39,6 +44,8 @@ const FaucetList = () => {
     "Arbitrum Goerli": "⚪️",
   };
 
+
+  // filtered faucet
   const filteredFaucets = faucets.filter(
     (network) =>
       network.chain.toLowerCase().includes(query.toLowerCase()) ||
@@ -51,11 +58,11 @@ const FaucetList = () => {
     <div className="p-6 max-w-5xl mx-auto">
       <Toaster />
 
-      <div className="mb-6">
+      <div className="mb-6 " >
         <input
           type="text"
           placeholder="🔍 Search networks or faucets..."
-          className="p-3 border rounded w-full mb-4 text-black"
+          className="p-3 border rounded w-full mb-4 text-black border-gradient-to-r from-cyan-400 to-blue-500"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
@@ -92,10 +99,10 @@ const FaucetList = () => {
                     try {
                       await switchChain({ chainId: network.chainId });
                       window.open(faucet.link, "_blank");
-                      toast.success(`✅ Switched to ${network.chain}`);
+                      toast.success(`Switched to ${network.chain}`);
                     } catch (err) {
                       console.error("Chain switch error:", err);
-                      toast.error("❌ Switch failed. Switch manually in your wallet.");
+                      toast.error("Switch failed. Switch manually in your wallet.");
                     }
                   }}
                   className="mt-2 inline-block bg-cyan-600 hover:bg-cyan-500 text-white px-4 py-2 rounded transition font-medium"

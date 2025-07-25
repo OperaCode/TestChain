@@ -30,8 +30,14 @@ const Landing = () => {
             to="/home"
             className="hover:text-cyan-400 transition-colors duration-200 font-semibold"
           >
-            Faucets
+            Explore Faucets
           </Link>
+          <a
+            href="#top"
+            className="hover:text-cyan-400 transition-colors duration-200 font-semibold"
+          >
+            TestChain
+          </a>
           <a
             href="#features"
             className="hover:text-cyan-400 transition-colors duration-200 font-semibold"
@@ -43,7 +49,7 @@ const Landing = () => {
 
       <main>
         {/* Hero Section */}
-        <section className="text-center py-24 px-4 bg-gradient-to-r from-cyan-500 to-blue-600">
+        <section id="top" className="text-center py-24 px-4 bg-gradient-to-r from-cyan-500 to-blue-600">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             Your Ultimate Testnet Faucet Finder
           </h1>
