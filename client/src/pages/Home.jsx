@@ -1,87 +1,54 @@
 // src/pages/Home.jsx
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
+import React from "react";
+import FaucetList from "../components/FaucetList";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { Link } from "react-router-dom";
 
 const Home = () => {
-  const [faucets, setFaucets] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchFaucets = async () => {
-      try {
-        const res = await axios.get("http://localhost:3000/server/faucets");
-        setFaucets(res.data);
-      } catch (err) {
-        console.error("Error fetching faucets:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchFaucets();
-  }, []);
-
-  if (loading)
-    return (
-      <p className="text-center py-20 text-xl text-gray-400">
-        Loading faucets...
-      </p>
-    );
-
   return (
-    <div className="bg-gray-900 min-h-screen text-white px-4 py-10">
-      <header className="relative z-10 flex justify-between items-center mb-12 max-w-7xl mx-auto">
+    <div className="bg-gray-900 min-h-screen text-white">
+      <header className="relative z-10 flex justify-between items-center px-6 py-8 max-w-7xl mx-auto">
         <h1 className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
-          TestnetTap
+          TestChain
         </h1>
         <nav className="flex items-center gap-6">
-          <ul className="flex items-center gap-6">
-            <li>
-              <ConnectButton />
-            </li>
-            <li>
-              <Link
-                to="/"
-                className="text-gray-300 hover:text-cyan-400 transition-colors duration-200 font-semibold"
-              >
-                Exit App
-              </Link>
-            </li>
-          </ul>
+          <ConnectButton />
+          <Link
+            to="/"
+            className="text-gray-300 hover:text-cyan-400 transition-colors duration-200 font-semibold"
+          >
+            Exit
+          </Link>
         </nav>
       </header>
 
-      <h1 className="text-3xl md:text-4xl font-bold text-center mb-10">
-        Available Testnet Faucets
-      </h1>
-      <div className="max-w-5xl mx-auto space-y-12">
-        {faucets.map((network) => (
-          <div key={network.chain}>
-            <h2 className="text-2xl font-semibold border-b border-purple-600 pb-2 mb-4">
-              {network.chain}
+      <main className="relative">
+        <section className="text-center py-16 px-4 bg-gradient-to-b from-gray-800 to-gray-900">
+          <div className="max-w-2xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+              Explore Testnet Faucets
             </h2>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {network.faucets.map((faucet) => (
-                <li
-                  key={faucet.name}
-                  className="bg-gray-800 rounded-lg p-5 shadow hover:shadow-lg transition"
-                >
-                  <h3 className="text-xl font-bold mb-2">{faucet.name}</h3>
-                  <a
-                    href={faucet.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-purple-400 hover:text-purple-300 underline"
-                  >
-                    Visit Faucet →
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <p className="text-gray-300 mb-6">
+              Easily find faucets for popular Ethereum, Polygon, BSC, and Layer 2 testnets. Connect your wallet to switch chains seamlessly.
+            </p>
+            <div className="flex justify-center">
+              <ConnectButton />
+            </div>
           </div>
-        ))}
-      </div>
+        </section>
+
+        <section className="max-w-5xl mx-auto px-4 py-12">
+          <h3 className="text-2xl md:text-3xl font-bold mb-10 text-center">
+            Available Faucets
+          </h3>
+
+          <FaucetList />
+        </section>
+      </main>
+
+      <footer className="text-center py-6 text-gray-500 text-sm border-t border-gray-700">
+        &copy; {new Date().getFullYear()} TestChain Faucet Finder. Built with ❤️
+      </footer>
     </div>
   );
 };
