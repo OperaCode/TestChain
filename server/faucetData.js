@@ -1,3 +1,5 @@
+
+// raw faucet data
 const faucetData = [
   {
     chain: "Ethereum Goerli",
