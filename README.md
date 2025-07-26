@@ -28,16 +28,16 @@ TestChain is a sleek, developer-focused dApp that aggregates trusted testnet fau
 ## 🚀 Getting Started
 
 
-# 1. Clone the repo
+## 1. Clone the repo
 git clone https://github.com/OperaCode/TestChain.git
 
-# 2. Install dependencies
+## 2. Install dependencies
 npm install
 
-# 3. Set environment variables
+## 3. Set environment variables
 
 
-# Add your WalletConnect Project ID, etc.
+## Add your WalletConnect Project ID, etc.
 
-# 4. Run the dev server
+## 4. Run the dev server
 npm run dev
