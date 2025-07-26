@@ -51,7 +51,7 @@ const Home = () => {
       </main>
 
       <footer className="text-center py-6 text-gray-500 text-sm border-t border-gray-700">
-        &copy; {new Date().getFullYear()} TestChain Faucet Finder. Built with ❤️
+        &copy; {new Date().getFullYear()} TestChain Faucet Finder. Built with ❤️ by Opera, for Web3 builders.
       </footer>
     </div>
   );

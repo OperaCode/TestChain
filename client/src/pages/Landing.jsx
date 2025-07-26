@@ -116,7 +116,7 @@ const Landing = () => {
 
         {/* Footer */}
         <footer className="bg-gray-800 text-gray-400 text-center p-6 mt-10">
-          © {new Date().getFullYear()} DropScout. Built with ❤️ for Web3 builders.
+          © {new Date().getFullYear()} DropScout. Built with ❤️ by Opera, for Web3 builders.
         </footer>
       </main>
     </div>
